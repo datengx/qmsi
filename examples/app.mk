@@ -125,7 +125,8 @@ endif
 ### Build C files in APP_DIR
 $(OBJ_DIR)/%.o: $(APP_DIR)/%.c libqmsi
 	$(call mkdir, $(OBJ_DIR))
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -I$(BASE_DIR)/include \
+	-I$(BASE_DIR)/drivers/include -c -o $@ $<
 
 ### Link object files into APP ELF
 $(APP): $(LINKER_FILE) $(OBJECTS) libqmsi

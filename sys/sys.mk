@@ -41,7 +41,7 @@ GENERATED_DIRS += $(SYS_DIR)/$(BUILD)
 ### Build C files
 $(APP_DIR)/$(BUILD)/$(SOC)/$(TARGET)/$(OBJ)/$(ITA_SUBOBJ)/%.o: $(SYS_DIR)/%.c
 	$(call mkdir, $(APP_DIR)/$(BUILD)/$(SOC)/$(TARGET)/$(OBJ)/$(ITA_SUBOBJ))
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -I$(BASE_DIR)/include -I$(BASE_DIR)/drivers/include -c -o $@ $<
 
 ifeq ($(TARGET), sensor)
 include $(SYS_DIR)/sensor/sys.mk

@@ -36,6 +36,8 @@ TARGET ?= $(DEFAULT_TARGET)
 TARGETS_quark_d2000 = x86
 TARGETS_quark_se = x86 \
                    sensor
+mkdir = @mkdir -p $(1)
+
 ifeq ($(filter $(SOC),$(SUPPORTED_SOCS)),)
 $(error SOC=$(SOC) is not supported. Run 'make help' for help)
 endif
@@ -82,6 +84,8 @@ else
 	$(call copy, $(LIBQMSI_LIB_DIR)\$(LIBQMSI_FILENAME), $(SLINK_NAME))
 endif
 endif
+
+$(info mkdir in driver folder: $(mkdir))
 
 $(LIBQMSI_INCLUDE_DIR)/%.h: $(HEADERS)
 	$(call mkdir, $(LIBQMSI_INCLUDE_DIR))

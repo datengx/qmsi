@@ -47,6 +47,8 @@ $(error IAMCU_TOOLCHAIN_DIR is not defined)
 endif
 endif
 
+$(info OS = $(OS))
+
 ### OS specific
 ifeq ($(OS),Windows_NT)
 # Windows variants
@@ -64,6 +66,7 @@ else
 mkdir = @md $(subst /,\,$(1)) > nul 2>&1 || exit 0
 copy = @copy $(subst /,\,$(1)) $(subst /,\,$(2)) > nul 2>&1 || exit 0
 endif
+mkdir = @mkdir -p $(1)
 else
 # Unix variants
 export PATH := $(TOOLCHAIN_DIR):$(PATH)
